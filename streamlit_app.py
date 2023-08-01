@@ -1,6 +1,6 @@
 import streamlit as st
-st.markdown("<h1 style='text-align: center; color: grey;'>Daksh Bhatnagar</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center; color: black;'>Data Analyst at QSS Global LLP </h2>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: black;'>Daksh Bhatnagar</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; color: light grey;'>Data Analyst at QSS Global LLP </h2>", unsafe_allow_html=True)
 """
 👋 Hey there, fellow Earthlings! 🌍 Daksh Bhatnagar reporting for data duty! 
 
