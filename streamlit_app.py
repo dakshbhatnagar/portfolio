@@ -1,9 +1,10 @@
 import streamlit as st
-st.title('DAKSH BHATNAAGR')
-st.header('Data Analyst at QSS Global LLP')
-
+st.markdown("<h1 style='text-align: center; color: grey;'>Daksh Bhatnagar</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; color: black;'>Data Analyst at QSS Global LLP </h2>", unsafe_allow_html=True)
 """
-👋 Hey there, fellow Earthlings! 🌍 Daksh Bhatnagar reporting for data duty! 📈 As a Data Analyst from Delhi, India, I have embarked on a quest to conquer the mysteries of data one byte at a time! 🕵️‍♂️
+👋 Hey there, fellow Earthlings! 🌍 Daksh Bhatnagar reporting for data duty! 
+
+📈 As a Data Analyst from Delhi, India, I enjoy unravelling the mysteries of data one byte at a time! 🕵️‍♂️
 
 💡 They say I'm a Kaggle Notebooks Expert, but really, I'm just a data wizard sprinkling bits of magic into my code! ✨ Check out my sorcery at: [Kaggle](https://www.kaggle.com/bhatnagardaksh/code)
 
@@ -22,10 +23,7 @@ st.header('Data Analyst at QSS Global LLP')
 
 🌟 If data was a symphony, I'd be the conductor, waving my wand of Python to produce harmonious insights! 🎶
 
-🚀 So, fellow data enthusiasts, buckle up and join me on this data rollercoaster! Together, we shall unravel the secrets hidden within the digits, and maybe even find some laughs along the way! 😄 Happy data hunting! 📊🔍
+🚀 So, fellow data enthusiasts, buckle up and join me on this data rollercoaster! 😄 Happy data hunting! 📊🔍
 
 Connect with me on [LinkedIn](https://www.linkedin.com/in/dakshb/) 
 """
-
-
-
