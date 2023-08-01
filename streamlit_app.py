@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+st.title('Daksh Bhatnagar's Portfolio')
 """
 👋 Hey there, fellow Earthlings! 🌍 Daksh Bhatnagar reporting for data duty! 📈 As a Data Analyst from Delhi, India, I have embarked on a quest to conquer the mysteries of data one byte at a time! 🕵️‍♂️
 
@@ -26,32 +27,4 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/dakshb/)
 """
 
 
-st.title('Hello World')
-wins = 0
-losses = 0
-ties = 0
 
-while True:
-    playerChoice = input("Enter rock, paper, or scissors (or q to quit): ")
-
-    if playerChoice.lower() == "q":
-        break
-
-    choices = ["rock", "paper", "scissors"]
-    computerChoice = random.choice(choices)
-
-    st.markdown("The computer chose:", computerChoice)
-
-    if computerChoice == playerChoice:
-        st.markdown("Draw!")
-        ties += 1
-    elif (playerChoice == "paper" and computerChoice == "rock") or \
-            (playerChoice == "rock" and computerChoice == "scissors") or \
-            (playerChoice == "scissors" and computerChoice == "paper"):
-        st.markdown("Won!")
-        wins += 1
-    else:
-        st.markdown("Lost!")
-        losses += 1
-
-st.markdown("Wins:", wins, "Losses:", losses, "Ties:", ties)
