@@ -3,7 +3,7 @@ st.markdown("<h1 style='text-align: center; color: black;'>Daksh Bhatnagar</h1>"
 st.markdown("<h2 style='text-align: center; color: light grey;'>Data Analyst</h2>", unsafe_allow_html=True)
 st.sidebar.title("Welcome")
 st.sidebar.info(
-    "This app contains all the projects which I was intrigued by and that I have done. "
+    "This app contains all the projects which I was intrigued by and that I have done.")
     ""
 """
 
