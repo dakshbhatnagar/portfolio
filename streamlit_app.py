@@ -10,9 +10,6 @@ hide_default_format = """
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
-#st.sidebar.title("Welcome")
-st.sidebar.info(
-    "This app contains all the projects which I was intrigued by and that I have done.")
 with st.sidebar:
     add_radio = st.markdown("<h1 style='text-align: center; color: black; font-size: 55px;'>Welcome</h1>", 
                 unsafe_allow_html=True)
