@@ -14,7 +14,7 @@ st.markdown(hide_default_format, unsafe_allow_html=True)
 with st.sidebar:
     add_radio = st.markdown("<h1 style='text-align: center; color: black; font-size: 55px;'>Welcome</h1>", 
                 unsafe_allow_html=True)
-    st.sidebar.info("This platform showcases my passion for data and tech, through the collection of the work I've done. Enjoy your stay!")
+    st.sidebar.write("This platform showcases my passion for data and tech, through the collection of the work I've done. Enjoy your stay!")
 
 def intro():
     st.write("""
@@ -41,15 +41,15 @@ def python_proj():
         Here is a glimpse of projects that I have done using Python:
 
         1. **Customer Churn Prediction** 📊
-            - Dive into the world of customer behavior analysis! Unravel the secrets of churn prediction and explore strategies to retain valuable customers.
+            - Dive into the world of customer behavior analysis! Using ANN, we find out if the credit card customer is going to be churned or not. Click [here](https://github.com/dakshbhatnagar/python_files/blob/main/JupyterNotebooks/customer-churn-prediction-anns%20(1).ipynb) 
 
         2. **Stock Price Predictions** 📈
-            - Embark on a financial adventure! Forecast stock prices and witness the magic of predictive analytics in the unpredictable world of finance.
+            - Stock Price predictions are always fun to make. Using Backtesting, a Stastical Model and a Deep Learning Network, we do exactly that. Check out the project [here](https://www.kaggle.com/code/bhatnagardaksh/stock-predictions-with-backtesting-arima-and-gru)
 
         3. **Sentiment Analysis** 📝
-            - Delve into the art of sentiment analysis! Unleash the power of Natural Language Processing (NLP) to understand and analyze the sentiments hidden within text.
+            - Understanding Sentiment of others can be tough. Let's make it a breeze. Click [here](https://www.kaggle.com/code/bhatnagardaksh/youtube-comments-analysis-updated) to find out how
 
-        4. **And Many More!** 🚀 
+        **And Many More!** 🚀 
         
         """
     )
@@ -72,7 +72,7 @@ def JS_page():
    
    c. 🌊 Water beats 🐍 Snake: Water will drown the slithering snakes with ease.
 
-Choose your move wisely, and let the dance-off and game showdown begin! 💃🎲""")
+    Choose your move wisely, and let the dance-off and game showdown begin! 💃🎲""")
 
 def contact_me():
     
