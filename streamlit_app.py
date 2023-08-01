@@ -14,7 +14,7 @@ st.markdown(hide_default_format, unsafe_allow_html=True)
 with st.sidebar:
     add_radio = st.markdown("<h1 style='text-align: center; color: black; font-size: 55px;'>Welcome</h1>", 
                 unsafe_allow_html=True)
-    st.sidebar.write("This platform showcases my passion for data and tech, through the collection of the work I've done. Enjoy your stay!")
+    st.sidebar.write("This app showcases my passion for data and tech through the collection of the work I've done. Hope you enjoy your stay!")
 
 def intro():
     st.markdown("Introduction")
@@ -29,7 +29,7 @@ def intro():
 
     🤖 I am also developing CNNs for [Zone Classification](https://www.kaggle.com/code/bhatnagardaksh/zone-classification-transfer-learning) for my unpaid side gig.
 
-    🍻 If you have got a data problem then I am more than willing to help 🎉 Whether it's discovering hidden patterns or making sense of the data chaos, I'm your data ally! 
+    🍻 If you have got a data problem then I'm more than willing to help 🎉 Whether it's discovering hidden patterns or making sense of the data chaos, I'm your data ally! 
 
 """)
 
@@ -64,7 +64,7 @@ def JS_page():
    The Job Scraper built using fetch API and regex concepts pulls the data from job portal and store it in a CSV. Take a look [here](https://github.com/dakshbhatnagar/JS_files/blob/main/scraper.js) 💼🔍
 
 3. **Snake, Water, and Gun Game** 🐍🌊🔫
-   Challenge the computer to a game of Snake, Water, and Gun! Can you outsmart the computer in this age-old battle of wits? Here's how it works:
+   Challenge the computer to a game of Snake, Water, and Gun! Here's how it works:
 
    a. 🐍 Snake beats 🔫 Gun: Snakes are sneaky! They'll take down guns any day.
    
@@ -72,7 +72,7 @@ def JS_page():
    
    c. 🌊 Water beats 🐍 Snake: Water will drown the slithering snakes with ease.
 
-    Choose your move wisely, and let the dance-off and game showdown begin! 💃🎲""")
+    Check out the [project](https://github.com/dakshbhatnagar/JS_files/blob/main/snake_water_gun.js)! 🎲""")
 
 def contact_me():
     st.markdown("Contact :")
