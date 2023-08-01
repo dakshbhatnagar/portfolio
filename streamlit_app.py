@@ -17,6 +17,7 @@ with st.sidebar:
     st.sidebar.write("This platform showcases my passion for data and tech, through the collection of the work I've done. Enjoy your stay!")
 
 def intro():
+    st.markdown("Introduction")
     st.write("""
     📈 As a Data Analyst from Delhi, India, I enjoy unravelling the mysteries of data one byte at a time! 🕵️‍♂️
 
@@ -33,7 +34,6 @@ def intro():
 """)
 
 def python_proj():
-    
     st.write(
         """
         ### 📁 Python Projects
@@ -75,6 +75,7 @@ def JS_page():
     Choose your move wisely, and let the dance-off and game showdown begin! 💃🎲""")
 
 def contact_me():
+    st.markdown("Contact :")
     
     st.write(
         """ 
