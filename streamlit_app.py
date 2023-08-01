@@ -4,7 +4,6 @@ st.markdown("<h2 style='text-align: center; color: light grey;'>Data Analyst</h2
 st.sidebar.title("Welcome")
 st.sidebar.info(
     "This app contains all the projects which I was intrigued by and that I have done.")
-    ""
 """
 
 📈 As a Data Analyst from Delhi, India, I enjoy unravelling the mysteries of data one byte at a time! 🕵️‍♂️
