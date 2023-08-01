@@ -1,6 +1,14 @@
 import streamlit as st
+
 st.markdown("<h1 style='text-align: center; color: black;'>Daksh Bhatnagar</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: light grey;'>Data Analyst</h2>", unsafe_allow_html=True)
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)
 st.sidebar.title("Welcome")
 st.sidebar.info(
     "This app contains all the projects which I was intrigued by and that I have done.")
