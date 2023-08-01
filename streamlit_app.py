@@ -36,7 +36,7 @@ def python_proj():
     
     st.write(
         """
-        ## 📁 Python Projects
+        ### 📁 Python Projects
 
         Here is a glimpse of projects that I have done using Python:
 
@@ -55,7 +55,7 @@ def python_proj():
     )
 def JS_page():
     st.write("""
-    ## 📁 JavaScript Mini Projects
+    ### 📁 JavaScript Mini Projects
 
 1. **Random Number Guesser** 🎲
     Are you a psychic when it comes to guessing numbers? Test your intuition with this fun and interactive Number Guesser game [here](https://github.com/dakshbhatnagar/JS_files/blob/main/index.js) 🤞
