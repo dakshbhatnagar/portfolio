@@ -9,12 +9,13 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
-with st.sidebar:
-    add_sidebar = st.markdown("<h1 style='text-align: center; color: black;font-size: 55px;'>Welcome</h1>", unsafe_allow_html=True)
 
 #st.sidebar.title("Welcome")
 st.sidebar.info(
     "This app contains all the projects which I was intrigued by and that I have done.")
+with st.sidebar:
+    add_radio = st.markdown("<h1 style='text-align: center; color: black; font-size: 55px;'>Welcome</h1>", 
+                unsafe_allow_html=True)
 """
 
 📈 As a Data Analyst from Delhi, India, I enjoy unravelling the mysteries of data one byte at a time! 🕵️‍♂️
