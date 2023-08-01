@@ -9,7 +9,7 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
-st.sidebar.title("<h1 style='text-align: center; color: black; font-size: 55px;'>Welcome</h1>")
+st.sidebar.title("Welcome")
 st.sidebar.info(
     "This app contains all the projects which I was intrigued by and that I have done.")
 """
