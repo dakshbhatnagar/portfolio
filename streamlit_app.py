@@ -1,5 +1,4 @@
 import streamlit as st
-import random
 st.title('Daksh Bhatnagar's Portfolio')
 """
 👋 Hey there, fellow Earthlings! 🌍 Daksh Bhatnagar reporting for data duty! 📈 As a Data Analyst from Delhi, India, I have embarked on a quest to conquer the mysteries of data one byte at a time! 🕵️‍♂️
