@@ -1,5 +1,5 @@
 import streamlit as st
-
+st.set_page_config(layout="wide")
 st.markdown("<h1 style='text-align: center; color: black;'>Daksh Bhatnagar</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: light grey;'>Data Analyst</h2>", unsafe_allow_html=True)
 hide_default_format = """
@@ -18,7 +18,7 @@ st.sidebar.info(
 
 💡 They say I'm a Kaggle Notebooks Expert but don't trust them. See for yourself on this : [link](https://www.kaggle.com/bhatnagardaksh/code)
 
-🤖 I am also casually developing CNNs on the side for my side gig! Yeah, I love me some data science as well!
+🤖 I am also developing CNNs for Zone Classification for my unpaid side gig.
 
 🍻 If you have got a data problem then I am more than willing to help 🎉 Whether it's discovering hidden patterns or making sense of the data chaos, I'm your data ally! 
 
@@ -31,5 +31,5 @@ st.sidebar.info(
 
 3. **Tableau Tales**: Unleashing the power of data visualization with Tableau! Witness the artistry at [Tableau](https://public.tableau.com/app/profile/daksh.bhatnagar) 🎨
 
-🚀 So, if you want to connect or just say Hi, connect with me on [LinkedIn](https://www.linkedin.com/in/dakshb/) 
+🚀 If you want to connect or just say Hi, connect with me on [LinkedIn](https://www.linkedin.com/in/dakshb/) 
 """
