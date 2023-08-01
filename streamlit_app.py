@@ -1,5 +1,6 @@
 import streamlit as st
 st.set_page_config(layout="wide")
+st.balloons()
 st.markdown("<h1 style='text-align: center; color: black;'>Daksh Bhatnagar</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: light grey;'>Data Analyst</h2>", unsafe_allow_html=True)
 hide_default_format = """
@@ -13,6 +14,7 @@ st.markdown(hide_default_format, unsafe_allow_html=True)
 with st.sidebar:
     add_radio = st.markdown("<h1 style='text-align: center; color: black; font-size: 55px;'>Welcome</h1>", 
                 unsafe_allow_html=True)
+    st.sidebar.info("This app shows my projects")
 """
 
 📈 As a Data Analyst from Delhi, India, I enjoy unravelling the mysteries of data one byte at a time! 🕵️‍♂️
