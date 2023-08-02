@@ -13,7 +13,7 @@ st.markdown(hide_default_format, unsafe_allow_html=True)
 with st.sidebar:
     add_radio = st.markdown("<h1 style='text-align: center; color: black; font-size: 55px;'>Welcome</h1>", 
                 unsafe_allow_html=True)
-    sidebar_info = st.markdown("<h2 style='text-align: center; color: black; font-size: 25px;'>This app showcases my passion for data and tech through the collection of the work I've done. Hope you enjoy your stay!</h1>", 
+    sidebar_info = st.markdown("<h2 style='text-align: center; color: black; font-size: 15px;'>This app showcases my passion for data and tech through the collection of the work I've done. Hope you enjoy your stay!</h1>", 
                 unsafe_allow_html=True)
 
 def intro():
