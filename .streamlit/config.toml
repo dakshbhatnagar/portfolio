@@ -5,7 +5,7 @@ backgroundColor = '#00325B' # Dark Blue
 
 secondaryBackgroundColor = '#55B2FF' # Lighter Blue
 textColor="#ffffff"
-font="serif"
+font="sans serif"
 
 # primaryColor="#6eb52f"
 # backgroundColor="#f0f0f5"
