@@ -76,9 +76,9 @@ def JS_page():
 def tableau():
        st.markdown('Tableau ')
 
-st.markdown('''
-<iframe src="https://public.tableau.com/app/profile/daksh.bhatnagar#!/?embedded=true" width="640" height="2197" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-''', unsafe_allow_html=True)
+       st.markdown('''
+       <iframe src="https://public.tableau.com/app/profile/daksh.bhatnagar#!//?embed=true" width="640" height="2197" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+       ''', unsafe_allow_html=True)
 
 
 def contact_me():
