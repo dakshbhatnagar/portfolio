@@ -73,14 +73,6 @@ def JS_page():
 
     """)
 
-def tableau():
-       st.markdown('Tableau ')
-
-       st.markdown('''
-       <iframe src="https://public.tableau.com/app/profile/daksh.bhatnagar?embedded=true" width="640" height="2197" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-       ''', unsafe_allow_html=True)
-
-
 def contact_me():
     st.markdown("Contact :")
     
@@ -96,8 +88,7 @@ page_names_to_funcs = {
     "Introduction": intro,
     "Python": python_proj,
     "JavaScript": JS_page,
-    "Contact" : contact_me,
-       "Tableau" : tableau
+    "Contact" : contact_me
 }
 
 demo_name = st.sidebar.selectbox("Choose a page", page_names_to_funcs.keys())
