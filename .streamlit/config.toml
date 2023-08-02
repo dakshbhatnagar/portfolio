@@ -1,7 +1,15 @@
-# [theme]
+[theme]
 
 primaryColor="#E3FDFD"
 backgroundColor="#CBF1F5"
 secondaryBackgroundColor="#A6E3E9"
 textColor="#71C9CE"
 font="arial"
+
+# primaryColor="#6eb52f"
+# backgroundColor="#f0f0f5"
+# secondaryBackgroundColor="#e0e0ef"
+# textColor="#262730"
+# font="sans serif"
+
+
