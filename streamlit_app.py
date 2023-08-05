@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config(layout="wide")
+st.set_page_config(page_title='Daksh Bhatnagar | Data Analyst', layout="wide", initial_sidebar_state="auto")
 st.markdown("<h1 style='text-align: center; color: white;'>Daksh Bhatnagar</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: white;'>Data Analyst</h2>", unsafe_allow_html=True)
 hide_default_format = """
@@ -8,6 +8,7 @@ hide_default_format = """
        footer {visibility: hidden;}
        </style>
        """
+
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
 with st.sidebar:
