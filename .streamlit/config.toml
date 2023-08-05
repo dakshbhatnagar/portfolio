@@ -1,7 +1,7 @@
 [theme]
 primaryColor = '#44bcd8' # Bright Orange
 backgroundColor = '#00325B' # Dark Blue
-secondaryBackgroundColor = '#FFA500' # Lighter Blue
+secondaryBackgroundColor = '#44bcd8' # Lighter Blue
 textColor="#ffffff"
 font="sans serif"
 
