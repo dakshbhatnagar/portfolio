@@ -1,16 +1,14 @@
 [theme]
-# primaryColor = '#44bcd8' # Bright Orange
-
-# backgroundColor = '#00325B' # Dark Blue
-
-# secondaryBackgroundColor = '#000000' # Lighter Blue
-# textColor="#ffffff"
-# font="sans serif"
-
-primaryColor="#6eb52f"
-backgroundColor="#f0f0f5"
-secondaryBackgroundColor="#e0e0ef"
-textColor="#262730"
+primaryColor = '#44bcd8' # Bright Orange
+backgroundColor = '#00325B' # Dark Blue
+secondaryBackgroundColor = '#FFA500' # Lighter Blue
+textColor="#ffffff"
 font="sans serif"
+
+# primaryColor="#6eb52f"
+# backgroundColor="#f0f0f5"
+# secondaryBackgroundColor="#e0e0ef"
+# textColor="#262730"
+# font="sans serif"
 
 
