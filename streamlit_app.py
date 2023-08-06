@@ -76,46 +76,22 @@ def explore():
     st.markdown(f"<h5 style='text-align: center; color: black; font-size: 15px;'>The model was trained on {data_hist.shape[0]} days worth of data</h1>", unsafe_allow_html=True)
     with st.expander("See Original Data"):
         st.dataframe(df)
-
-    st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Finding the values of p and q</h1>", 
-                    unsafe_allow_html=True)
-    # plot the ACF plot
-    fig = plot_acf(df.High, lags=5, title=f'Auto Correlation Function plot, {symbol}')
-    plt.gca().spines['top'].set_visible(False)
-    plt.gca().spines['right'].set_visible(False)
-    st.pyplot(fig)
-
-    fig = plot_pacf(df.High, lags=5, title=f'Auto Partial Correlation Function plot, {symbol}')
-    plt.gca().spines['top'].set_visible(False)
-    plt.gca().spines['right'].set_visible(False)
-    st.pyplot(fig)
-
-    with st.expander("See Explanation"):
-        st.write("You should stop looking further for p and q values when the ACF and PACF plots show a sharp cut-off or when the correlation values of the lags drop below a certain threshold.")
-        st.write("This usually indicates that the pattern of the data has been captured and adding additional lags would not provide any additional information.")
     
-    st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>For Integrated Order</h1>", 
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Institutional Holders</h5>", 
                     unsafe_allow_html=True)
+        st.dataframe(data.institutional_holders)
+        
+        st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Cash Flow</h5>", 
+                    unsafe_allow_html=True)
+        st.dataframe(data.cashflow)
 
-    fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(15, 10))
-    ax1.plot(df.High); ax1.set_title('Original Series'); ax1.axes.xaxis.set_visible(False)
-    ax1.spines['top'].set_visible(False)
-
-    # 1st Differencing
-    ax2.plot(df.High.diff()); ax2.set_title('1st Order Differencing'); ax2.axes.xaxis.set_visible(False)
-    ax2.spines['top'].set_visible(False)
-
-    # 2nd Differencing
-    ax3.plot(df.High.diff().diff()); ax3.set_title('2nd Order Differencing')
-    ax3.spines['top'].set_visible(False)
-
-    plt.xlabel('Lags')
-    plt.tight_layout()
-    st.pyplot(fig)
-
-    with st.expander("See Explanation"):
-        st.write("Integrated order (I) is a parameter in an ARIMA model that refers to the number of times the data have been differenced in order to make it stationary.")
-        st.write("A value of 0 indicates that the data has not been differenced, while a value of 1 indicates that the data has been differenced once. Higher values indicate that the data has been differenced multiple times.")
+    with col2:
+        st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Balance Sheet</h5>", unsafe_allow_html=True)
+        st.dataframe(data.balancesheet)
+        st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Earning Dates</h5>", unsafe_allow_html=True)
+        st.dataframe(data.earnings_dates)
 
 page_names_to_funcs = {
     "Predict": predict,
