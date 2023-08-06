@@ -20,6 +20,8 @@ To explore my portfolio app, you can visit the following link: [Portfolio App](h
 
 The app is open-source and publicly available on GitHub, but it is not currently licensed. You are welcome to view, explore, and even contribute to the code if you find any improvements or spot issues. 
 
+https://stockpredictions.streamlit.app/
+
 ## Feedback and Contributions
 
 I appreciate any feedback you may have on my projects or the app itself. If you discover any bugs, have suggestions for improvements, or want to collaborate on a project, feel free to create an issue or reach out to me through the contact page.
