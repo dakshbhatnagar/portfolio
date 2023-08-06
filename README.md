@@ -1,6 +1,8 @@
 # Stock Price Prediction App (ARIMA Model)
 
-Welcome to the stock price prediction app using the ARIMA (AutoRegressive Integrated Moving Average) model. This branch of the repository contains a different app that allows users to predict the closing price of a specific stock using the ARIMA model. The app utilizes historical stock price data to make predictions.
+Welcome to the branch. 
+
+This branch of the repository contains an app that allows users to predict the closing price of a specific stock using the ARIMA model. The app utilizes historical stock price data to make predictions.
 
 ## App Functionality
 
@@ -20,7 +22,7 @@ Alternatively, you can use the following link to directly access the ARIMA Stock
 
 ## Usage and Licensing
 
-Similar to the main portfolio app, this branch is also open-source and publicly available on GitHub. However, the same licensing conditions apply here; the app is not currently licensed, and you should not use it for any commercial purposes without explicit consent.
+The branch is open-source and publicly available on GitHub. However, the same licensing conditions apply here; the app is not currently licensed, and you should not use it for any commercial purposes without explicit consent.
 
 ## Feedback and Contributions
 
