@@ -1,4 +1,3 @@
-import numpy as np
 import streamlit as st
 import yfinance as yf
 import pandas as pd
@@ -21,13 +20,22 @@ hide_default_format = """
 st.set_page_config(page_title='Stock Predictions', layout="wide", initial_sidebar_state="auto")
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
-symbol = st.text_input('Enter a Symbol Here', '')
+symbol = st.text_input('Enter a Symbol Here e.g GOOGL or AAPL', '')
 data = yf.Ticker(symbol)
 data_hist = data.history(period="max")
 df = data_hist[["Open", "High", "Low", "Close", "Volume"]]
 
 def predict():
     if symbol:
+        col1, col2, col3, col4= st.columns(4)
+        with col1:
+            st.metric(label='Open', value=data.info['open'])
+        with col2:
+            st.metric(label='High',value=data.info['dayHigh'])
+        with col3:
+            st.metric(label='Low',value=data.info['dayLow'])
+        with col4:
+            st.metric(label='Close',value=data.info['previousClose'])
         st.markdown(f"<h5 style='text-align: center; color: black; font-size: 20px;'>Predicting {symbol} Close prices</h1>", 
                     unsafe_allow_html=True)
         train = df[df.index.year<2020]
@@ -50,9 +58,16 @@ def predict():
         plt.gca().spines['right'].set_visible(False);
         ax.plot(arr)
         st.pyplot(fig)
-        st.markdown("<h5 style='text-align: center; color: black; font-size: 20px;'>Actual Price and Predictions</h1>", 
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("<h5 style='text-align: center; color: black; font-size: 20px;'>Actual Price and Predictions</h1>", 
                     unsafe_allow_html=True)
-        st.dataframe(arr)
+            st.dataframe(arr)
+        with col2:
+            st.write("About :")
+            st.write(data.info['longBusinessSummary'])
+            st.write(f"Industry : {data.info['industry']}")
+            st.write(f"CEO : {data.info['companyOfficers'][0]['name']}")
     else:
         st.markdown('You did not enter a symbol.')
 
