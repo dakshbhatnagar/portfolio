@@ -1,4 +1,4 @@
-# Stock Price Prediction App (ARIMA Model)
+# Stock Price Prediction App
 
 Welcome to the branch. 
 
@@ -6,7 +6,7 @@ This branch of the repository contains an app that allows users to predict the c
 
 ## App Functionality
 
-The stock price prediction app provides the following features:
+The app provides the following features:
 
 1. **Select a Stock**: Users can choose a specific stock they are interested in from a list of available stocks.
 
@@ -14,18 +14,20 @@ The stock price prediction app provides the following features:
 
 3. **Visualization**: The app displays the historical stock price data and the predicted closing prices on an interactive chart to provide users with a visual representation of the predictions.
 
-## How to Access the ARIMA Stock Price Prediction App
+## How to Access the app
 
-To access the ARIMA stock price prediction app, you need to switch to the "ARIMA-Stock-Prediction" branch of this repository. You can find the branch selection dropdown on the GitHub interface and select the "stock-Prediction" branch.
+To access the stock price prediction app, you need to switch to the "stock_predictions" branch of this repository. You can find the branch selection dropdown on the GitHub interface and select the "stock-Prediction" branch.
 
 Alternatively, you can use the following link to directly access the ARIMA Stock Price Prediction App: [Link](https://stockpredictions.streamlit.app/)
 
 ## Usage and Licensing
 
-The branch is open-source and publicly available on GitHub. However, the same licensing conditions apply here; the app is not currently licensed, and you should not use it for any commercial purposes without explicit consent.
+The branch is open-source and publicly available on GitHub. However, the app is not currently licensed, and you should not use it for any commercial purposes without explicit consent.
 
 ## Feedback and Contributions
 
 I welcome any feedback or suggestions regarding the ARIMA Stock Price Prediction App. As this is an ongoing project, any contributions or bug reports that you come across will be highly appreciated. Please feel free to create issues or reach out to me through the contact page.
 
-I hope you find the ARIMA Stock Price Prediction App useful and informative. Happy predicting! 📈
+I hope you find the Stock Prediction App useful and informative. 
+
+Happy predicting! 📈
