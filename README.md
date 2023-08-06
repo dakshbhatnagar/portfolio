@@ -1,29 +1,29 @@
-# My Portfolio App
+# Stock Price Prediction App (ARIMA Model)
 
-Welcome to my portfolio app! This repository contains the code for my personal portfolio app, built using Streamlit and a combination of markdowns to showcase my introduction, Python projects, JavaScript projects, and contact information. In this app, you can learn more about who I am, explore the projects I have built, and find out how to reach out to me.
+Welcome to the stock price prediction app using the ARIMA (AutoRegressive Integrated Moving Average) model. This branch of the repository contains a different app that allows users to predict the closing price of a specific stock using the ARIMA model. The app utilizes historical stock price data to make predictions.
 
-## Pages
+## App Functionality
 
-1. **Introduction**: This page provides a brief introduction to who I am, my background, and my interests. You'll get to know more about me personally and professionally.
+The stock price prediction app provides the following features:
 
-2. **Python Projects**: On this page, you can find an overview of the Python projects I have developed. Each project is accompanied by a description, key features, and possibly links to the source code or live demos.
+1. **Select a Stock**: Users can choose a specific stock they are interested in from a list of available stocks.
 
-3. **JavaScript Projects**: Here, you'll find information about the JavaScript projects I have worked on. Similar to the Python Projects page, each project will have a description and links to relevant resources.
+2. **ARIMA Model Prediction**: Based on the historical stock price data fetched using `yfinance` library, the app uses the ARIMA model to make predictions for the selected stock's closing price.
 
-4. **Contact**: The contact page contains details on how you can reach out to me. You can find my email address, social media profiles, or any other means of contacting me.
+3. **Visualization**: The app displays the historical stock price data and the predicted closing prices on an interactive chart to provide users with a visual representation of the predictions.
 
-## How to Access the App
+## How to Access the ARIMA Stock Price Prediction App
 
-To explore my portfolio app, you can visit the following link: [Portfolio App](https://dakshbhatnagar.streamlit.app/)
+To access the ARIMA stock price prediction app, you need to switch to the "ARIMA-Stock-Prediction" branch of this repository. You can find the branch selection dropdown on the GitHub interface and select the "stock-Prediction" branch.
+
+Alternatively, you can use the following link to directly access the ARIMA Stock Price Prediction App: [Link](https://stockpredictions.streamlit.app/)
 
 ## Usage and Licensing
 
-The app is open-source and publicly available on GitHub, but it is not currently licensed. You are welcome to view, explore, and even contribute to the code if you find any improvements or spot issues. 
-
-https://stockpredictions.streamlit.app/
+Similar to the main portfolio app, this branch is also open-source and publicly available on GitHub. However, the same licensing conditions apply here; the app is not currently licensed, and you should not use it for any commercial purposes without explicit consent.
 
 ## Feedback and Contributions
 
-I appreciate any feedback you may have on my projects or the app itself. If you discover any bugs, have suggestions for improvements, or want to collaborate on a project, feel free to create an issue or reach out to me through the contact page.
+I welcome any feedback or suggestions regarding the ARIMA Stock Price Prediction App. As this is an ongoing project, any contributions or bug reports that you come across will be highly appreciated. Please feel free to create issues or reach out to me through the contact page.
 
-Thank you for visiting my portfolio app, and I hope you find it informative and enjoyable! Happy exploring! 😊
+I hope you find the ARIMA Stock Price Prediction App useful and informative. Happy predicting! 📈
