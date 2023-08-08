@@ -2,10 +2,7 @@ import streamlit as st
 import numpy as np
 import yfinance as yf
 import pandas as pd
-import matplotlib.pyplot as plt
-plt.rcParams['font.size'] = 14
-plt.rcParams['figure.dpi'] = 100
-plt.rcParams['figure.figsize'] = (22,5)
+import plotly.express as px
 import statsmodels.tsa.stattools as ts
 import statsmodels.api as sm
 from statsmodels.tsa.seasonal import seasonal_decompose
@@ -55,14 +52,8 @@ def predict():
         forecast = [model_fit.forecast(exog=test[exogenous_features].iloc[i]).values[0] for i in range(len(test))]
         test['Forecast'] = forecast
         arr = test[['Close','Forecast']][-50:]
-        fig, ax = plt.subplots()
-        ax.set_ylabel('Price')
-        ax.set_xlabel('Time')
-        plt.gca().spines['top'].set_visible(False)
-        plt.gca().spines['right'].set_visible(False);
-        ax.plot(arr)
-        plt.gca().legend(('Close','Predictions'))
-        st.pyplot(fig)
+        fig = px.line(arr)
+        st.plotly_chart(fig, theme="streamlit", use_container_width=True)
         col1, col2 = st.columns(2)
         with col1:
             st.markdown("<h5 style='text-align: center; color: black; font-size: 20px;'>Actual Price and Predictions</h1>", 
