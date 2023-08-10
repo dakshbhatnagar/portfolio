@@ -20,6 +20,12 @@ To access the stock price prediction app, you need to switch to the `stock_predi
 
 Alternatively, you can use the following link to directly access the ARIMA Stock Price Prediction [App](https://stockpredictions.streamlit.app/)
 
+## Clone the repo
+```
+git clone --branch stock_predictions https://github.com/dakshbhatnagar/portfolio.git
+```
+
+
 ## Usage and Licensing
 
 The branch is open-source and publicly available on GitHub. However, the app is not currently licensed, and you should not use it for any commercial purposes without explicit consent.
