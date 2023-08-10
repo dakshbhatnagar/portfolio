@@ -21,7 +21,7 @@ To access the stock price prediction app, you need to switch to the `stock_predi
 Alternatively, you can use the following link to directly access the ARIMA Stock Price Prediction [App](https://stockpredictions.streamlit.app/)
 
 ## Clone the repo
-```
+```python
 git clone --branch stock_predictions https://github.com/dakshbhatnagar/portfolio.git
 ```
 
