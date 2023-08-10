@@ -52,7 +52,7 @@ def predict():
         forecast = [model_fit.forecast(exog=test[exogenous_features].iloc[i]).values[0] for i in range(len(test))]
         test['Forecast'] = forecast
         arr = test[['Close','Forecast']][-50:]
-        fig = px.line(arr)
+        fig = px.line(arr, color_discrete_sequence=["#0474BA", "#F17720"])
         st.plotly_chart(fig, theme="streamlit", use_container_width=True)
         col1, col2 = st.columns(2)
         with col1:
