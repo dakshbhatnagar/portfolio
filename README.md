@@ -16,9 +16,9 @@ The app provides the following features:
 
 ## How to Access the app
 
-To access the stock price prediction app, you need to switch to the `stock_predictions` branch of this repository. You can find the branch selection dropdown on the GitHub interface and select the "stock-Prediction" branch.
+To access the stock price prediction app, you need to switch to the `stock_predictions` branch of this repository. You can find the branch selection dropdown on the GitHub interface and select the `stock_predictions` branch.
 
-Alternatively, you can use the following link to directly access the ARIMA Stock Price Prediction App: [Link](https://stockpredictions.streamlit.app/)
+Alternatively, you can use the following link to directly access the ARIMA Stock Price Prediction [App](https://stockpredictions.streamlit.app/)
 
 ## Usage and Licensing
 
