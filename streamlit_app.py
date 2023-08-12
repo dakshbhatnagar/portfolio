@@ -5,10 +5,7 @@ import pandas as pd
 import plotly.express as px
 import statsmodels.tsa.stattools as ts
 import statsmodels.api as sm
-from statsmodels.tsa.seasonal import seasonal_decompose
-from statsmodels.graphics.tsaplots import plot_acf
-from statsmodels.graphics.tsaplots import plot_pacf
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 import plotly.graph_objects as go
 hide_default_format = """
        <style>
@@ -44,8 +41,9 @@ def predict():
             st.metric(label='Close',value=data.info['previousClose'])
         st.markdown(f"<h5 style='text-align: center; color: black; font-size: 20px;'>Predicting {symbol} Close prices</h1>", 
                     unsafe_allow_html=True)
-        train = df[df.index.year<2020]
-        test = df[df.index.year>=2020]
+        train = df[df.index.year<2021]
+        test = df[df.index.year>=2021]
+        st.write(f"Model trained on {len(train)} days worth of data")
         exogenous_features = ['Open', 'High', 'Low']
         train = train[train.columns[:4]]
         test = test[test.columns[:4]]
@@ -92,7 +90,8 @@ def predict():
 
 def explore():
     
-    st.markdown(f"<h5 style='text-align: left; color: black; font-size: 15px;'>Collected {data_hist.shape[0]} days worth of data</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h5 style='text-align: left; color: black; font-size: 12px;'>Collected {data_hist.shape[0]} days worth of data</h1>", unsafe_allow_html=True)
+    
     with st.expander("See Original Data"):
         st.dataframe(df)
         csv = convert_df(df)
@@ -110,7 +109,7 @@ def explore():
                         low=new_df['Low'],
                         close=new_df['Close'])
 
-    layout = go.Layout(title='Candlestick Chart, 365 Days', title_x=0.4, width=800, height=500)
+    layout = go.Layout(title=f'{symbol} Candlestick Chart, 365 Days', title_x=0.4, width=800, height=500)
     fig = go.Figure(data=[trace], layout=layout)
     st.plotly_chart(fig)
 
@@ -157,19 +156,7 @@ with st.sidebar:
 
     with col3:
         st.write(' ')
-    sidebar_logo = st.markdown(
-        """
-        <style>
-            [data-testid="stSidebarNav"] {
-                background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Yahoo%21_Finance_logo_2021.png/1200px-Yahoo%21_Finance_logo_2021.png?20220131010522);
-                background-repeat: no-repeat;
-                padding-top: 0px;
-                background-position: 20px 20px;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    
     st.markdown("<h1 style='text-align: center; color: black; font-size: 25px;'>Stock Predictions using yfinance</h1>", 
                 unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: black; font-size: 10px;'>The prediction model used is ARIMA, a statistical model used to predict future values by combining past data and patterns.</p>", 
