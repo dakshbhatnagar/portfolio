@@ -8,6 +8,8 @@ import statsmodels.api as sm
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.graphics.tsaplots import plot_acf
 from statsmodels.graphics.tsaplots import plot_pacf
+from datetime import date, timedelta, datetime
+import plotly.graph_objects as go
 hide_default_format = """
        <style>
        #MainMenu {visibility: hidden; }
@@ -16,6 +18,7 @@ hide_default_format = """
        """
 
 st.set_page_config(page_title='Stock Predictions', layout="wide", initial_sidebar_state="auto")
+
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
 symbol = st.text_input('Enter a Symbol Here e.g GOOGL or AAPL', '')
@@ -51,9 +54,9 @@ def predict():
         
         forecast = [model_fit.forecast(exog=test[exogenous_features].iloc[i]).values[0] for i in range(len(test))]
         test['Forecast'] = forecast
-        arr = test[['Close','Forecast']][-50:]
-        fig = px.line(arr, color_discrete_sequence=["#0474BA", "#F17720"])
-        st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+        arr = test[['Close','Forecast']][-30:]
+        fig = px.line(arr,color_discrete_sequence=["#0474BA", "#F17720"])
+        st.plotly_chart(fig, theme="streamlit",  title="Prediction Chart", use_container_width=True)
         col1, col2 = st.columns(2)
         with col1:
             st.markdown("<h5 style='text-align: center; color: black; font-size: 20px;'>Actual Price and Predictions</h1>", 
@@ -89,11 +92,28 @@ def predict():
 
 def explore():
     
-    st.markdown(f"<h5 style='text-align: center; color: black; font-size: 15px;'>Collected {data_hist.shape[0]} days worth of data</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h5 style='text-align: left; color: black; font-size: 15px;'>Collected {data_hist.shape[0]} days worth of data</h1>", unsafe_allow_html=True)
     with st.expander("See Original Data"):
         st.dataframe(df)
         csv = convert_df(df)
         st.download_button(label="Download data as CSV",data=csv,file_name='Raw Data.csv',mime='csv')
+    
+    df.index = df.index.date
+    days_to_subtract = 365
+    end = date.today()
+    start = end - timedelta(days=days_to_subtract)
+
+    new_df = df[start:end]
+    trace = go.Candlestick(x=new_df.index,
+                        open=new_df['Open'],
+                        high=new_df['High'],
+                        low=new_df['Low'],
+                        close=new_df['Close'])
+
+    layout = go.Layout(title='Candlestick Chart, 365 Days', title_x=0.4, width=800, height=500)
+    fig = go.Figure(data=[trace], layout=layout)
+    st.plotly_chart(fig)
+
 
     col1, col2 = st.columns(2)
     with col1:
@@ -118,17 +138,41 @@ def explore():
         st.dataframe(data.earnings_dates)
         csv = convert_df(data.earnings_dates)
         st.download_button(label="Download data as CSV",data=csv,file_name='earnings_dates.csv',mime='text/csv')
-
+    
+    
 page_names_to_funcs = {
     "Predict": predict,
     "Explore": explore
 }
 
 with st.sidebar:
-    st.markdown("<h1 style='text-align: center; color: black; font-size: 30px;'>Stock Predictions using yfinance</h1>", 
+    logo ='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Yahoo%21_Finance_logo_2021.png/1200px-Yahoo%21_Finance_logo_2021.png?20220131010522'
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.write(' ')
+
+    with col2:
+        st.image(logo, width=100)
+
+    with col3:
+        st.write(' ')
+    sidebar_logo = st.markdown(
+        """
+        <style>
+            [data-testid="stSidebarNav"] {
+                background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Yahoo%21_Finance_logo_2021.png/1200px-Yahoo%21_Finance_logo_2021.png?20220131010522);
+                background-repeat: no-repeat;
+                padding-top: 0px;
+                background-position: 20px 20px;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.markdown("<h1 style='text-align: center; color: black; font-size: 25px;'>Stock Predictions using yfinance</h1>", 
                 unsafe_allow_html=True)
-    url = "https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/"
-    st.markdown("<p style='text-align: center; color: black; font-size: 12px;'>The prediction model used is ARIMA which is a statistical model used to predict future values in time series data by combining past data and patterns.</p>", 
+    st.markdown("<p style='text-align: center; color: black; font-size: 10px;'>The prediction model used is ARIMA, a statistical model used to predict future values by combining past data and patterns.</p>", 
                 unsafe_allow_html=True)
     demo_name = st.selectbox('Predict Or Explore', page_names_to_funcs.keys())
     
