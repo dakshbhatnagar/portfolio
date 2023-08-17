@@ -84,7 +84,7 @@ def predict():
             st.write(f"Industry : {data.info['industry']}")
             st.write(f"CEO : {data.info['companyOfficers'][0]['name']}")
     else:
-        st.markdown("<h5 style='text-align: center; color: black; font-size: 30px;'>Welcome to Stock Prediction App!</h5>", 
+       st.markdown("<h5 style='text-align: center; color: black; font-size: 30px;'>Welcome to Stock Prediction App!</h5>", 
                     unsafe_allow_html=True)
        text = "We're excited to have you on board. In this project, we leverage the powerful capabilities of the Yahoo Finance library and an ARIMA model to provide real-time predictions like never before. The approach involves training the prediction model on the fly as soon as you input your data. This means that you can receive accurate forecasts tailored to your specific needs, all in real-time. Say goodbye to pre-trained models and hello to dynamic predictions that adapt to your requirements. Our Streamlit app provides a user-friendly interface for you to interact with the prediction engine seamlessly. Get ready to experience the future of financial forecasting! In the explore section, you can also get to know about the institutional holders, the company's cash flow, balance sheet etc"
        st.markdown(f"<h5 style='text-align: center; color: black; font-size: 15px;'>{text}</h5>", 
