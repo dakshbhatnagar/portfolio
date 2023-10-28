@@ -32,15 +32,20 @@ def predict():
     if symbol:
         col1, col2, col3, col4= st.columns(4)
         with col1:
-            st.metric(label='Open', value=data.info['open'])
+            open_val = np.around(data.history(period='today').Open.values,2)
+            st.metric(label='Open', value=open_val)
         with col2:
-            st.metric(label='High',value=data.info['dayHigh'])
+            high_val = np.around(data.history(period='today').High.values,2)
+            st.metric(label='High',value=high_val)
         with col3:
-            st.metric(label='Low',value=data.info['dayLow'])
+            low_val = np.around(data.history(period='today').Low.values,2)
+            st.metric(label='Low',value=low_val)
         with col4:
-            st.metric(label='Close',value=data.info['previousClose'])
+            close_val = np.around(data.history(period='today').Close.values,2)
+            st.metric(label='Close',value=close_val)
         st.markdown(f"<h5 style='text-align: center; color: black; font-size: 20px;'>Predicting {symbol} Close prices</h1>", 
                     unsafe_allow_html=True)
+           
         train = df[df.index.year<2021]
         test = df[df.index.year>=2021]
         st.write(f"Model trained on {len(train)} days worth of data")
