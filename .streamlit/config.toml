@@ -1,8 +1,8 @@
 [theme]
-primaryColor = '#55B2FF' # Bright Orange
-backgroundColor = '#00325B' # Dark Blue
-secondaryBackgroundColor = '#55B2FF' # Lighter Blue
-textColor="#ffffff"
+primaryColor = '#900C3F' # Bright Orange
+backgroundColor = '#C70039' # Dark Blue
+secondaryBackgroundColor = '#900C3F' # Lighter Blue
+textColor="#FCF5ED"
 font="sans serif"
 
 # primaryColor="#6eb52f"

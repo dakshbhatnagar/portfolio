@@ -1,7 +1,7 @@
 import streamlit as st
 st.set_page_config(page_title='Daksh Bhatnagar | Data Analyst', layout="wide")
-st.markdown("<h1 style='text-align: center; color: white;'>Daksh Bhatnagar</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center; color: white;'>Data Analyst</h2>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; font-size: 28px; color: #FCF5ED;'>Daksh Bhatnagar</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; font-size: 25px; color: #FCF5ED;'>Data Analyst</h2>", unsafe_allow_html=True)
 hide_default_format = """
        <style>
        #MainMenu {visibility: hidden; }
@@ -12,9 +12,9 @@ hide_default_format = """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
 with st.sidebar:
-    add_radio = st.markdown("<h1 style='text-align: center; color: black; font-size: 55px;'>Welcome</h1>", 
+    add_radio = st.markdown("<h1 style='text-align: center; color: #FCF5ED; font-size: 55px;'>Welcome</h1>", 
                 unsafe_allow_html=True)
-    sidebar_info = st.markdown("<h2 style='text-align: center; color: black; font-size: 18px;'>This app showcases my passion for data and tech through the collection of the work I've done. Hope you enjoy your stay!</h1>", 
+    sidebar_info = st.markdown("<h2 style='text-align: center; color: #FCF5ED; font-size: 16px;'>This app showcases my passion for data and tech through the collection of the work I've done. Hope you enjoy your stay!</h1>", 
                 unsafe_allow_html=True)
 
 def intro():
@@ -24,11 +24,11 @@ def intro():
 
     ✅ With the help of Google Sheets & Looker, I can help you look deeper into your business & make informed decisions. Feel free to check out my [Tableau](https://public.tableau.com/app/profile/daksh.bhatnagar#!/) profile.
 
-    🔥 I'm always on the quest for business problems that can be solved with the help of data and some automation. Problem Solving is fun!.
+    🔥 I'm always on the quest for business problems that can be solved with the help of data and automation.
 
-    💡 They say I'm a Kaggle Notebooks Expert but don't trust them. See for yourself [here](https://www.kaggle.com/bhatnagardaksh/code).
+    💡 They say I'm a Kaggle Notebooks Master but don't trust them. See for yourself [here](https://www.kaggle.com/bhatnagardaksh/code).
 
-    🤖 I'm also developing CNNs for [Zone Classification](https://www.kaggle.com/code/bhatnagardaksh/zone-classification-transfer-learning) for my unpaid side gig. 
+    🤖 I'm also developing CNNs for [Zone Classification](https://www.kaggle.com/code/bhatnagardaksh/zone-classification-transfer-learning) for my freelancing project. 
     """)
 
 def python_proj():
