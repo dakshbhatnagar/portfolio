@@ -2,6 +2,13 @@
 
 Welcome to my portfolio app! This repository contains the code for my personal portfolio app, built using Streamlit and a combination of markdowns to showcase my introduction, Python projects, JavaScript projects, and contact information. In this app, you can learn more about who I am, explore the projects I have built, and find out how to reach out to me.
 
+To clone this repository just use this command
+
+```python
+git clone https://github.com/dakshbhatnagar/portfolio.git
+cd portfolio
+```
+
 ## Pages
 
 1. **Introduction**: This page provides a brief introduction to who I am, my background, and my interests. You'll get to know more about me personally and professionally.
