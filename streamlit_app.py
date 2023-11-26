@@ -20,15 +20,17 @@ with st.sidebar:
 def intro():
     st.markdown("Introduction")
     st.write("""
-    📈 As a Data Analyst from Delhi, India, I enjoy unravelling the mysteries of data one byte at a time! 🕵️‍♂️
 
-    ✅ With the help of Google Sheets & Looker, I can help you look deeper into your business & make informed decisions. Feel free to check out my [Tableau](https://public.tableau.com/app/profile/daksh.bhatnagar#!/) profile.
+    📈 As a Data Analyst from New Delhi, India, I enjoy unraveling the mysteries of data one byte at a time! 
+
+    ✅ With the help of [Google Sheets](https://docs.google.com/spreadsheets/d/14h0UCZOhi1nQx7oT7DY8SYmqp3S0Y5UssEjkGAuVgXo/edit#gid=312503756) & Looker, I can help you look deeper into your business & make informed decisions. Feel free to check out my [Tableau](https://public.tableau.com/app/profile/daksh.bhatnagar#!/) profile.
 
     🔥 I'm always on the quest for business problems that can be solved with the help of data and automation.
 
     💡 They say I'm a Kaggle Notebooks Master but don't trust them. See for yourself [here](https://www.kaggle.com/bhatnagardaksh/code).
 
-    🤖 I'm also developing CNNs for [Zone Classification](https://www.kaggle.com/code/bhatnagardaksh/zone-classification-transfer-learning) for my freelancing project. 
+    🤖 I'm also developing CNNs for [Zone Classification](https://www.kaggle.com/code/bhatnagardaksh/zone-classification-transfer-learning) for my freelancing project and I am open to take on other freelance projects as well.
+
     """)
 
 def python_proj():
@@ -42,10 +44,10 @@ def python_proj():
             - Dive into the world of customer behavior analysis! Using ANN, we find out if the credit card customer is going to be churned or not. Click [here](https://github.com/dakshbhatnagar/python_files/blob/main/JupyterNotebooks/customer-churn-prediction-anns%20(1).ipynb) 
 
         2. **Stock Price Predictions** 📈
-            - Stock Price predictions are always fun to make. Using Backtesting, a Stastical Model and a Deep Learning Network, we do exactly that. Check out the project [here](https://www.kaggle.com/code/bhatnagardaksh/stock-predictions-with-backtesting-arima-and-gru)
+            - Stock Price predictions are always fun to make. Using Backtesting, a statistical model, and a Deep Learning Network, we do exactly that. Check out the project [here](https://www.kaggle.com/code/bhatnagardaksh/stock-predictions-with-backtesting-arima-and-gru). I have also made an app around the same as well which you can check out on this [link](https://stockpredictions.streamlit.app/)
 
         3. **Sentiment Analysis** 📝
-            - Understanding Sentiment of others can be tough. Let's make it a breeze. Click [here](https://www.kaggle.com/code/bhatnagardaksh/youtube-comments-analysis-updated) to find out how
+            - Understanding the Sentiments of others can be tough. Let's make it a breeze. Click [here](https://www.kaggle.com/code/bhatnagardaksh/youtube-comments-analysis-updated) to find out how
 
         **And Many More!** 🚀 
 
@@ -58,10 +60,10 @@ def JS_page():
     ##### 📁 JavaScript Mini Projects
 
 1. **Random Number Guesser** 🎲
-    Are you a psychic when it comes to guessing numbers? Test your intuition with this fun & interactive Number Guesser game [here](https://github.com/dakshbhatnagar/JS_files/blob/main/index.js) 🤞
+    Are you a psychic when it comes to guessing numbers? Test your intuition with this fun & interactive Number Guesser game [here](https://github.com/dakshbhatnagar/JS_files/blob/main/index.js) 
 
 2. **Job Scraper** 📝
-   The Job Scraper built using fetch API and regex concepts pulls the data from job portal & store it in a CSV. Take a peek [here](https://github.com/dakshbhatnagar/JS_files/blob/main/scraper.js) 💼🔍
+   The Job Scraper built using fetch API and regex concepts pulls the data from the job portal & stores it in a CSV. Take a peek [here](https://github.com/dakshbhatnagar/JS_files/blob/main/scraper.js) 
 
 3. **Snake, Water, and Gun Game** 🐍🌊🔫
    Challenge the computer to a [game](https://github.com/dakshbhatnagar/JS_files/blob/main/snake_water_gun.js) of Snake, Water, and Gun! Here's how it works:
@@ -82,14 +84,14 @@ def contact_me():
 
     🚀 If you want to connect or just say Hi, connect with me on [LinkedIn](https://www.linkedin.com/in/dakshb/) 
             
-    ✉️ Got questions, or suggestions? I'm all ears! Let me hear it at bhatnagar91@gmail.com !        
+    ✉️ Got questions or suggestions? I'm all ears! Let me hear it at bhatnagar91@gmail.com!        
         """)
 
 page_names_to_funcs = {
     "Introduction": intro,
     "Python": python_proj,
     "JavaScript": JS_page,
-    "Contact" : contact_me
+    "Contact": contact_me
 }
 
 demo_name = st.sidebar.selectbox("Choose a page", page_names_to_funcs.keys())
