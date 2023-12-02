@@ -5,5 +5,3 @@ yfinance
 plotly
 statsmodels
 datetime
-google-generativeai
-python-dotenv

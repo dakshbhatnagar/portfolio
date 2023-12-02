@@ -4,21 +4,10 @@ import yfinance as yf
 import pandas as pd
 import os
 import plotly.express as px
-from dotenv import load_dotenv
 import statsmodels.tsa.stattools as ts
 import statsmodels.api as sm
 from datetime import date, timedelta
 import plotly.graph_objects as go
-import google.generativeai as palm
-
-load_dotenv()
-
-key = os.environ.get("key")
-
-palm.configure(api_key=key)
-
-models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
-llm = models[0].name
 
 hide_default_format = """
        <style>
@@ -91,26 +80,23 @@ def predict():
             st.info("*RMSE (Root Mean Square Error) is a measure used to find how accurate a prediction model is by calculating the average difference between predicted and actual values in a dataset.")
 
         with col2:
-            prompt = f"You are a learned being and help others with their queries. Tell the user a little bit of history about this {symbol} and dont make it too long and keep it only 1 para long"
-
-            completion = palm.generate_text(model=llm,prompt=prompt,temperature=0,max_output_tokens=800)
-
-            about = completion.result 
-            st.write("About :", about)
+            about = data.get_info()['longBusinessSummary']
+            
+            st.write("About :\n\n", about)
     else:
-       st.markdown("<h5 style='text-align: center; color: black; font-size: 30px;'>Welcome to Stock Prediction App!</h5>", 
+       st.markdown("<h5 style='text-align: center; color: black; font-size: 30px;'>Welcome!</h5>", 
                     unsafe_allow_html=True)
        
-       prompt = """
-        You are a learned being and help others with their queries
+       text = """
+        Welcome to the app that utilizes the power of statistical modeling to forecast historical stock prices. Our app is designed to assist individuals of all technical backgrounds in gaining valuable insights into the stock market.
 
-        Write an introduction about an app that predicts the historical stock prices using a statistical model called ARIMA. Dont complicate
-        as the audience might not be technically sound and dont talk about us having a website. Welcome the user and wish them well.
-        """
+        \n\nHarnessing the ARIMA (Autoregressive Integrated Moving Average) model, the app analyzes historical stock price data to identify patterns and trends. This analysis forms the basis for predicting future price movements, providing valuable guidance for informed investment decisions.
 
-       completion = palm.generate_text(model=llm,prompt=prompt,temperature=0.2,max_output_tokens=800)
+        \n\nWhether you're a seasoned investor or a curious beginner, the app empowers you to navigate the complexities of the stock market with greater confidence. Our easy-to-use interface and straightforward explanations make it simple to understand the underlying principles behind our predictions.
 
-       text = completion.result 
+        \n\nEmbark on your investment journey with Stock Predictor and unlock a world of informed financial decision-making.
+                """
+        
        st.markdown(f"<p style='text-align: center; color: black; font-size: 17px;'>{text}</p>", 
                     unsafe_allow_html=True)
        
@@ -120,41 +106,43 @@ def explore():
     st.markdown(f"<h5 style='text-align: left; color: black; font-size: 12px;'>Collected {data_hist.shape[0]} days worth of data</h1>", unsafe_allow_html=True)
     
     with st.expander("See Original Data"):
-        st.dataframe(df)
+        if symbol:
+            st.dataframe(df)
     
-    df.index = df.index.date
-    days_to_subtract = 365
-    end = date.today()
-    start = end - timedelta(days=days_to_subtract)
+    if symbol:
+        df.index = df.index.date
+        days_to_subtract = 365
+        end = date.today()
+        start = end - timedelta(days=days_to_subtract)
+    
+        new_df = df[start:end]
+        trace = go.Candlestick(x=new_df.index,
+                            open=new_df['Open'],
+                            high=new_df['High'],
+                            low=new_df['Low'],
+                            close=new_df['Close'])
 
-    new_df = df[start:end]
-    trace = go.Candlestick(x=new_df.index,
-                        open=new_df['Open'],
-                        high=new_df['High'],
-                        low=new_df['Low'],
-                        close=new_df['Close'])
-
-    layout = go.Layout(title=f'{symbol} Candlestick Chart, 365 Days', title_x=0.4, width=800, height=500)
-    fig = go.Figure(data=[trace], layout=layout)
-    st.plotly_chart(fig)
-
-
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Institutional Holders</h5>", 
-                    unsafe_allow_html=True)
-        st.dataframe(data.institutional_holders)
-        
-        st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Cash Flow</h5>", 
-                    unsafe_allow_html=True)
-        st.dataframe(data.cashflow)
+        layout = go.Layout(title=f'{symbol} Candlestick Chart, 365 Days', title_x=0.4, width=800, height=500)
+        fig = go.Figure(data=[trace], layout=layout)
+        st.plotly_chart(fig)
 
 
-    with col2:
-        st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Balance Sheet</h5>", unsafe_allow_html=True)
-        st.dataframe(data.balancesheet)
-        st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Earning Dates</h5>", unsafe_allow_html=True)
-        st.dataframe(data.earnings_dates)
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Institutional Holders</h5>", 
+                        unsafe_allow_html=True)
+            st.dataframe(data.institutional_holders)
+            
+            st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Cash Flow</h5>", 
+                        unsafe_allow_html=True)
+            st.dataframe(data.cashflow)
+
+
+        with col2:
+            st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Balance Sheet</h5>", unsafe_allow_html=True)
+            st.dataframe(data.balancesheet)
+            st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Earning Dates</h5>", unsafe_allow_html=True)
+            st.dataframe(data.earnings_dates)
     
 page_names_to_funcs = {
     "Predict": predict,
