@@ -8,6 +8,7 @@ import statsmodels.tsa.stattools as ts
 import statsmodels.api as sm
 from datetime import date, timedelta
 import plotly.graph_objects as go
+
 # Hide default Streamlit format for cleaner appearance
 hide_default_format = """
        <style>
@@ -20,11 +21,15 @@ hide_default_format = """
 st.set_page_config(page_title='Stock Predictions', layout="wide", initial_sidebar_state="auto")
 
 st.markdown(hide_default_format, unsafe_allow_html=True)
-# Get user input for stock symbol
 
+# Get user input for stock symbol
 symbol = st.text_input('Enter a Symbol Here e.g GOOGL or AAPL', '')
 data = yf.Ticker(symbol)
+
+#Fetching the records for the lifetime of the stock
 data_hist = data.history(period="max")
+
+##Skipping the dividend column
 df = data_hist[["Open", "High", "Low", "Close", "Volume"]]
 
 # Function to predict and display stock metrics and predictions
@@ -48,9 +53,11 @@ def predict():
         st.markdown(f"<h5 style='text-align: center; color: black; font-size: 20px;'>Predicting {symbol} Close prices</h1>", 
                     unsafe_allow_html=True)
         
-        # Train ARIMA model   
-        train = df[df.index.year<2021]
-        test = df[df.index.year>=2021]
+        # Train ARIMA model 
+        # taking all the records before 2022 to train the data
+        train = df[df.index.year<2022]
+        #creating a test set with the records including and after 2022
+        test = df[df.index.year>=2022]
         st.write(f"Model trained on {len(train)} days worth of data")
         exogenous_features = ['Open', 'High', 'Low']
         train = train[train.columns[:4]]
@@ -72,7 +79,7 @@ def predict():
                         trendline="ols",  # Ordinary Least Squares regression line,
                         trendline_color_override="#F17720",
                         labels={'Close': 'Actual Close', 'Forecast': 'Predicted Close'},
-                        title='Actual vs Predicted Close Prices',
+                        title='Actual vs Predicted Close Prices, Test Set',
                         opacity=0.7,
                         size_max=15)  # Adjust the marker size
 
@@ -110,13 +117,11 @@ def predict():
                     unsafe_allow_html=True)
        
        text = """
-        Welcome to the app that utilizes the power of statistical modeling to forecast historical stock prices. Our app is designed to assist individuals of all technical backgrounds in gaining valuable insights into the stock market.
+        Welcome to the app that utilizes the power of statistical modeling to forecast historical stock prices. The app (powered by Yahoo Finance API) is designed to assist individuals of all technical backgrounds in gaining valuable insights into the stock market.
 
         \n\nHarnessing the ARIMA (Autoregressive Integrated Moving Average) model, the app analyzes historical stock price data to identify patterns and trends. This analysis forms the basis for predicting future price movements, providing valuable guidance for informed investment decisions.
 
-        \n\nWhether you're a seasoned investor or a curious beginner, the app empowers you to navigate the complexities of the stock market with greater confidence. Our easy-to-use interface and straightforward explanations make it simple to understand the underlying principles behind our predictions.
-
-        \n\nEmbark on your investment journey with Stock Predictor and unlock a world of informed financial decision-making.
+        \n\nEmbark on your investment journey with the app and unlock a world of informed financial decision-making.
                 """
         
        st.markdown(f"<p style='text-align: center; color: black; font-size: 17px;'>{text}</p>", 
