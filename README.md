@@ -8,7 +8,7 @@ This branch of the repository contains an app that allows users to predict the c
 
 The app provides the following features:
 
-1. **Select a Stock**: Users can choose a specific stock they are interested in from a list of available stocks.
+1. **Select a Stock**: Users can type a specific stock they are interested in from a list of available stocks on Yahoo Finance API.
 
 2. **ARIMA Model Prediction**: Based on the historical stock price data fetched using `yfinance` library, the app uses the ARIMA model to make predictions for the selected stock's closing price.
 
