@@ -39,16 +39,16 @@ def predict():
         # Display real-time stock metrics
         col1, col2, col3, col4= st.columns(4)
         with col1:
-            open_val = np.around(data.history(period='today').Open.values,2)
+            open_val = round(data.history(period='1d').Open.values[0],2)
             st.metric(label='Open', value=open_val)
         with col2:
-            high_val = np.around(data.history(period='today').High.values,2)
+            high_val = round(data.history(period='1d').High.values[0],2)
             st.metric(label='High',value=high_val)
         with col3:
-            low_val = np.around(data.history(period='today').Low.values,2)
+            low_val = round(data.history(period='1d').Low.values[0],2)
             st.metric(label='Low',value=low_val)
         with col4:
-            close_val = np.around(data.history(period='today').Close.values,2)
+            close_val = round(data.history(period='1d').Close.values[0],2)
             st.metric(label='Close',value=close_val)
         st.markdown(f"<h5 style='text-align: center; color: black; font-size: 20px;'>Predicting {symbol} Close prices</h1>", 
                     unsafe_allow_html=True)
