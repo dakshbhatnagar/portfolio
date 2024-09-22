@@ -1,34 +1,59 @@
-# My Portfolio App
+# Stock Price Prediction App
 
-Welcome to my portfolio app! This repository contains the code for my personal portfolio app, built using Streamlit and a combination of markdowns to showcase my introduction, Python projects, JavaScript projects, and contact information. In this app, you can learn more about who I am, explore the projects I have built, and find out how to reach out to me.
+Glad that you landed on the project and I welcome you. 
 
-## Pages
+This branch of the repository contains an app that allows users to predict the closing price of a specific stock using the ARIMA model. 
 
-1. **Introduction**: This page provides a brief introduction to who I am, my background, and my interests. You'll get to know more about me personally and professionally.
+![image](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*8TlLwpuzTnDreDKn.jpg)
 
-2. **Python Projects**: On this page, you can find an overview of the Python projects I have developed. Each project is accompanied by a description, key features, and possibly links to the source code or live demos.
+The app utilizes historical stock price data to make predictions.
 
-3. **JavaScript Projects**: Here, you'll find information about the JavaScript projects I have worked on. Similar to the Python Projects page, each project will have a description and links to relevant resources.
+---
 
-4. **Contact**: The contact page contains details on how you can reach out to me. You can find my email address, social media profiles, or any other means of contacting me.
+## App Functionality
 
-## How to Access the App
+The app provides the following features:
 
-To explore my portfolio app, you can visit the following link: [Portfolio App](https://dakshbhatnagar.streamlit.app/)
+1. **Select a Stock**: Users can type a specific stock they are interested in from a list of available stocks on Yahoo Finance API.
 
-To clone this repository just use this command
+2. **ARIMA Model Prediction**: Based on the historical stock price data fetched using `yfinance` library, the app uses the ARIMA model to make predictions for the selected stock's closing price.
+
+3. **Visualization**: The app displays the historical stock price data and the predicted closing prices on an interactive chart to provide users with a visual representation of the predictions.
+
+---
+
+## How to Access the app
+
+To access the stock price prediction app, you need to switch to the `stock_predictions` branch of this repository. You can find the branch selection dropdown on the GitHub interface and select the `stock_predictions` branch.
+
+Alternatively, you can use the following link to directly access the ARIMA Stock Price Prediction [App](https://stockpredictions.streamlit.app/)
+
+
+---
+
+## Clone the repo
+```python
+git clone --branch stock_predictions https://github.com/dakshbhatnagar/portfolio.git
+```
+Switch to the directory
 
 ```python
-git clone https://github.com/dakshbhatnagar/portfolio.git
 cd portfolio
 ```
+---
 
 ## Usage and Licensing
 
-The app is open-source and publicly available on GitHub, but it is not currently licensed. You are welcome to view, explore, and even contribute to the code if you find any improvements or spot issues. 
+The branch is open-source and publicly available on GitHub. However, the app is not currently licensed, and you should not use it for any commercial purposes without explicit consent.
+
+---
 
 ## Feedback and Contributions
 
-I appreciate any feedback you may have on my projects or the app itself. If you discover any bugs, have suggestions for improvements, or want to collaborate on a project, feel free to create an issue or reach out to me through the contact page.
+I welcome any feedback or suggestions regarding the ARIMA Stock Price Prediction App. As this is an ongoing project, any contributions or bug reports that you come across will be highly appreciated. 
 
-Thank you for visiting my portfolio app, and I hope you find it informative and enjoyable! Happy exploring! 😊
+I hope you find the Stock Prediction App useful and informative. 
+
+---
+
+*Happy predicting!* 📈

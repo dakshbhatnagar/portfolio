@@ -1,143 +1,220 @@
+# Import necessary libraries
 import streamlit as st
+import numpy as np
+import yfinance as yf
+import pandas as pd
+import plotly.express as px
+import statsmodels.tsa.stattools as ts
+import statsmodels.api as sm
+from datetime import date, timedelta
+import plotly.graph_objects as go
 
-# Page configuration
-st.set_page_config(
-    page_title='Daksh Bhatnagar | Data Analyst',
-    layout="wide",
-    initial_sidebar_state='expanded'
-)
-
-# Hide default Streamlit formatting
+# Hide default Streamlit format for cleaner appearance
 hide_default_format = """
-<style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-</style>
-"""
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+
+
+st.set_page_config(page_title='Stock Predictions', layout="wide", initial_sidebar_state="auto")
+
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
-# Main header
-st.markdown(
-    """
-    <h1 style='text-align: center; font-size: 28px; color: #ffffff;'>Daksh Bhatnagar</h1>
-    <h2 style='text-align: center; font-size: 25px; color: #ffffff;'>Data Analyst</h2>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# Get user input for stock symbol
+symbol = st.text_input('Enter a Symbol Here e.g GOOGL or AAPL', '')
+data = yf.Ticker(symbol)
 
-# Sidebar
-with st.sidebar:
-    st.markdown(
-        """
-        <h1 style='text-align: center; color: #FCF5ED; font-size: 36px;'>Welcome</h1>
-        <h2 style='text-align: center; color: #FCF5ED; font-size: 16px;'>This app showcases my passion for data and tech through my work collection. Hope you enjoy your stay!</h2>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+#Fetching the records for the lifetime of the stock
+data_hist = data.history(period="max")
 
-# Functions for different pages
-def intro():
-    st.markdown(
-        """
-        ## Introduction
-        **📈 As a Data Analyst from New Delhi, India, I enjoy unraveling the mysteries of data one byte at a time!**
+##Skipping the dividend column
+df = data_hist[["Open", "High", "Low", "Close", "Volume"]]
 
-        ✅ Using [Google Sheets](https://docs.google.com/spreadsheets/d/14h0UCZOhi1nQx7oT7DY8SYmqp3S0Y5UssEjkGAuVgXo/edit#gid=312503756) & Looker, I can help you make informed business decisions. Check out my [Tableau](https://public.tableau.com/app/profile/daksh.bhatnagar#!/) profile.
-
-        🔥 I'm always on the quest for business problems that can be solved with data and automation.
-
-        💡 I'm a Kaggle Notebooks Master. See for yourself [here](https://www.kaggle.com/bhatnagardaksh/code).
-
-        🤖 Currently developing CNNs for [Zone Classification](https://www.kaggle.com/code/bhatnagardaksh/zone-classification-transfer-learning) and open to freelance projects.
-        """,
-        unsafe_allow_html=True
-    )
-
-def google_sheets():
-    st.markdown(
-        """
-        ### 📊 Google Sheets Experience
-        - Leveraged Google Sheets and AppScript for cost reduction and automation in business processes.
-
-        - Developed a Google Sheets pipeline by bringing in data from different worksheets for instant insights, boosting data-driven decisions by 20%.
-
-        - Automated daily reports with Google AppScript, ensuring regular updates to the management and reducing manual work which led to 15% increase in efficiency.
-
-        - Automated monthly incentive calculations (recruiters and TL) and distributions with Google Sheets, AppScript, reducing manual work by 15%.
+# Function to predict and display stock metrics and predictions
+def predict():
+    
+    if symbol:
+        # Display real-time stock metrics
+        col1, col2, col3, col4= st.columns(4)
+        with col1:
+            open_val = round(data.history(period='1d').Open.values[0],2)
+            st.metric(label='Open', value=open_val)
+        with col2:
+            high_val = round(data.history(period='1d').High.values[0],2)
+            st.metric(label='High',value=high_val)
+        with col3:
+            low_val = round(data.history(period='1d').Low.values[0],2)
+            st.metric(label='Low',value=low_val)
+        with col4:
+            close_val = round(data.history(period='1d').Close.values[0],2)
+            st.metric(label='Close',value=close_val)
+        st.markdown(f"<h5 style='text-align: center; color: black; font-size: 20px;'>Predicting {symbol} Close prices</h1>", 
+                    unsafe_allow_html=True)
         
-        - [Project Example](https://docs.google.com/spreadsheets/d/14h0UCZOhi1nQx7oT7DY8SYmqp3S0Y5UssEjkGAuVgXo/edit#gid=312503756)
-        """
-    )
+        # Train ARIMA model 
+        # taking all the records before 2022 to train the data
+        train = df[df.index.year<2022]
+        #creating a test set with the records including and after 2022
+        test = df[df.index.year>=2022]
+        st.write(f"Model trained on {len(train)} days worth of data")
+        exogenous_features = ['Open', 'High', 'Low']
+        train = train[train.columns[:4]]
+        test = test[test.columns[:4]]
+        model = sm.tsa.arima.ARIMA(endog=train['Close'], exog=train[exogenous_features], order=(1, 1, 1))
+        model_fit = model.fit()
 
-def python_proj():
-    st.markdown(
-        """
-        ### 📁 Python Projects
-
-        **1. Customer Churn Prediction** 📊 - Analyze customer behavior with ANN. [Explore here](https://github.com/dakshbhatnagar/python_files/blob/main/JupyterNotebooks/customer-churn-prediction-anns%20(1).ipynb).
-
-        **2. Stock Price Predictions** 📈 - Predict stock prices using Backtesting, ARIMA, and GRU. [Check it out](https://www.kaggle.com/code/bhatnagardaksh/stock-predictions-with-backtesting-arima-and-gru).
-
-        **3. Sentiment Analysis** 📝 - Simplify sentiment analysis. [Learn more](https://www.kaggle.com/code/bhatnagardaksh/youtube-comments-analysis-updated).
-
-        **And Many More!** 🚀
-
-        View more on [GitHub](https://github.com/dakshbhatnagar/python_files).
-        """,
-        unsafe_allow_html=True
-    )
-
-def sql_projects():
-    st.markdown(
-        """
-        ###  SQL Projects
-        🧬 Using SQL I analysed HR Data where in I looked at questions like:-
-
-        - How many people are in each job
-        - Which job pays more
-        - Here is the [Project Link](https://github.com/dakshbhatnagar/SQLProjects/tree/main/HRData)
-
-        - Advanced SQL queries for data extraction and analysis.
-
-        - 🙋‍♂️ [SQL GitHub Repository](https://github.com/dakshbhatnagar/SQLProjects)
-        """
-    )
-
-def visualization():
-    st.markdown(
-        """
-        ### 📈 BI Tool Projects
-
-        - 🧾 Trend of Digital Payments in India - [Link](https://public.tableau.com/app/profile/daksh.bhatnagar/viz/IndianDigitalPayments/Dashboard1)
+        # Generate forecast
+        forecast = [model_fit.forecast(exog=test[exogenous_features].iloc[i]).values[0] for i in range(len(test))]
+        test['Forecast'] = forecast
+        test['Confidence'] =  np.around(1/(1+ np.exp(-test['Forecast']))*100,2)
         
-        - 💉  COVID -19 Dashboard - [Link](https://public.tableau.com/app/profile/daksh.bhatnagar/viz/COVID-19Dashboard_16433078005920/Dashboard)
         
-        - 🙋‍♂️ Check out the whole [Tableau Profile](https://public.tableau.com/app/profile/daksh.bhatnagar#!/)
-        """
-    )
+        
+        # Plot prediction chart
+        arr = test[['Close','Forecast']][-30:]
 
-def contact_me():
-    st.markdown(
-        """
-        ## Contact
-        🚀 Connect with me on [LinkedIn](https://www.linkedin.com/in/dakshb/).
+        fig = px.line(arr,color_discrete_sequence=["#0474BA", "#F17720"])
+        st.plotly_chart(fig, theme="streamlit",  title="Prediction Chart", use_container_width=True)
+        
+        # Plot scatter plot for actual vs predicted close prices
+        fig = px.scatter(arr, x='Close', y='Forecast', color_discrete_sequence=["#0474BA", "#F17720"],
+                        trendline="ols",  # Ordinary Least Squares regression line,
+                        trendline_color_override="#F17720",
+                        labels={'Close': 'Actual Close', 'Forecast': 'Predicted Close'},
+                        title='Actual vs Predicted Close Prices, Test Set',
+                        opacity=0.7,
+                        size_max=15)  # Adjust the marker size
 
-        ✉️ Questions or suggestions? Email me at bhatnagar91@gmail.com!
-        """,
-        unsafe_allow_html=True
-    )
+        st.plotly_chart(fig, theme="streamlit",  title="Actuals and Predictions Scattterplot", use_container_width=True)
+        
+        # Display metrics and information
+        col1, col2 = st.columns(2)
+        with col1:
 
-# Page navigation
+            arr = test[['Close','Forecast', 'Confidence']][-30:]
+            st.markdown("<h5 style='text-align: center; color: black; font-size: 20px;'>Actual Close and Predictions</h1>", 
+                    unsafe_allow_html=True)
+            st.dataframe(arr)
+             
+            MSE = np.square(np.subtract(test.Close,test.Forecast)).mean()
+            rmse = round(np.sqrt(MSE),2)
+            Col1, Col2, Col3 = st.columns(3)
+
+            with Col1:
+                st.write(' ')
+
+            with Col2:
+                st.metric(label='RMSE', value=rmse)
+
+            with Col3:
+                st.write(' ')
+            
+            st.info("*RMSE (Root Mean Square Error) is a measure used to find how accurate a prediction model is by calculating the average difference between predicted and actual values in a dataset.")
+
+        with col2:
+            # Display information about the stock
+            about = data.get_info()['longBusinessSummary']
+            
+            st.write("About :\n\n", about)
+    else:
+       st.markdown("<h5 style='text-align: center; color: black; font-size: 30px;'>Welcome!</h5>", 
+                    unsafe_allow_html=True)
+       
+       text = """
+        Welcome to the app that utilizes the power of statistical modeling to forecast historical stock prices. The app (powered by Yahoo Finance API) is designed to assist individuals of all technical backgrounds in gaining valuable insights into the stock market.
+
+        \n\nHarnessing the ARIMA (Autoregressive Integrated Moving Average) model, the app analyzes historical stock price data to identify patterns and trends. This analysis forms the basis for predicting future price movements, providing valuable guidance for informed investment decisions.
+
+        \n\nEmbark on your investment journey with the app and unlock a world of informed financial decision-making.
+                """
+        
+       st.markdown(f"<p style='text-align: center; color: black; font-size: 17px;'>{text}</p>", 
+                    unsafe_allow_html=True)
+       
+# Function to explore stock data and display various information       
+def explore():
+    # Display collected data and candlestick chart
+    st.markdown(f"<h5 style='text-align: left; color: black; font-size: 12px;'>Collected {data_hist.shape[0]} days worth of data</h1>", unsafe_allow_html=True)
+    
+    with st.expander("See Original Data"):
+        if symbol:
+            st.dataframe(df)
+    
+    if symbol:
+        # Display candlestick chart
+        df.index = df.index.date
+        days_to_subtract = 365
+        end = date.today()
+        start = end - timedelta(days=days_to_subtract)
+    
+        new_df = df[start:end]
+        trace = go.Candlestick(x=new_df.index,
+                            open=new_df['Open'],
+                            high=new_df['High'],
+                            low=new_df['Low'],
+                            close=new_df['Close'])
+
+        layout = go.Layout(title=f'{symbol} Candlestick Chart, 365 Days', title_x=0.4, width=800, height=500)
+        fig = go.Figure(data=[trace], layout=layout)
+        st.plotly_chart(fig)
+
+        # Display institutional holders, cash flow, balance sheet, and earning dates
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Institutional Holders</h5>", 
+                        unsafe_allow_html=True)
+            
+            holders = data.institutional_holders.fillna(0)
+            st.dataframe(holders)
+            
+            st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Cash Flow</h5>", 
+                        unsafe_allow_html=True)
+            st.dataframe(data.cashflow.fillna(0))
+
+
+        with col2:
+            st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Balance Sheet</h5>", unsafe_allow_html=True)
+            st.dataframe(data.balancesheet.fillna(0))
+            st.markdown("<h5 style='text-align: center; color: red; font-size: 20px;'>Earning Dates</h5>", unsafe_allow_html=True)
+            st.dataframe(data.earnings_dates.fillna(0))
+# Dictionary mapping page names to corresponding functions    
 page_names_to_funcs = {
-    "Introduction": intro,
-    "Google Sheets": google_sheets,
-    "Python": python_proj,
-    "SQL": sql_projects,
-    "Visualization": visualization,
-    "Contact": contact_me
+    "Predict": predict,
+    "Explore": explore
 }
+# Streamlit sidebar
+with st.sidebar:
+    logo ='https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Yahoo%21_Finance_logo_2021.png/1200px-Yahoo%21_Finance_logo_2021.png?20220131010522'
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.write(' ')
 
-demo_name = st.sidebar.selectbox("Choose a page", page_names_to_funcs.keys())
+    with col2:
+        st.image(logo, width=100)
+
+    with col3:
+        st.write(' ')
+    
+    st.markdown("<h1 style='text-align: center; color: black; font-size: 25px;'>Stock Prediction App</h1>", 
+                unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: black; font-size: 10px;'>The prediction model used is ARIMA, a statistical model used to predict future values by combining past data and patterns.</p>", 
+                unsafe_allow_html=True)
+    # Dropdown to select the page (Predict or Explore)
+    demo_name = st.selectbox('Predict Or Explore', page_names_to_funcs.keys())
+    
+    st.markdown("Contact :")
+    
+    contact = st.write(
+        """ 
+    🤝 Check out my [Portfolio Website](https://dakshbhatnagar.github.io)
+
+    🚀 Connect with me on [LinkedIn](https://www.linkedin.com/in/dakshb/) 
+            
+    ✉️ Shoot me an [email](bhatnagar91@gmail.com)!        
+        """)
+# Call the selected function based on the dropdown selection
+
 page_names_to_funcs[demo_name]()
