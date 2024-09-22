@@ -2,7 +2,7 @@
 
 Glad that you landed on the project and I welcome you. 
 
-This branch of the repository contains an app that allows users to predict the closing price of a specific stock using the ARIMA model. 
+This project of the repository contains an app that allows users to predict the closing price of a specific stock using the ARIMA model. 
 
 ![image](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*8TlLwpuzTnDreDKn.jpg)
 
@@ -24,7 +24,7 @@ The app provides the following features:
 
 ## How to Access the app
 
-To access the stock price prediction app, you need to switch to the `stock_predictions` branch of this repository. You can find the branch selection dropdown on the GitHub interface and select the `stock_predictions` branch.
+To access the stock price prediction app, you need to switch to the `stock_predictions` project of this repository. You can find the project selection dropdown on the GitHub interface and select the `stock_predictions` project.
 
 Alternatively, you can use the following link to directly access the ARIMA Stock Price Prediction [App](https://stockpredictions.streamlit.app/)
 
@@ -33,18 +33,18 @@ Alternatively, you can use the following link to directly access the ARIMA Stock
 
 ## Clone the repo
 ```python
-git clone --branch stock_predictions https://github.com/dakshbhatnagar/portfolio.git
+git clone https://github.com/dakshbhatnagar/predictions_app.git
 ```
 Switch to the directory
 
 ```python
-cd portfolio
+cd predictions_app
 ```
 ---
 
 ## Usage and Licensing
 
-The branch is open-source and publicly available on GitHub. However, the app is not currently licensed, and you should not use it for any commercial purposes without explicit consent.
+The project is open-source and publicly available on GitHub. However, the app is not currently licensed, and you should not use it for any commercial purposes without explicit consent.
 
 ---
 
